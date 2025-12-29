@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="algoritm2:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/algoritm2_jar</output-path>
-    <root id="archive" name="algoritm.jar">
-      <element id="module-output" name="algoritm.main" />
-    </root>
-  </artifact>
-</component>

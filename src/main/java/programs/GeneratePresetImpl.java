@@ -17,8 +17,9 @@ public class GeneratePresetImpl implements GeneratePreset {
         Map<String, Integer> typeCount = new HashMap<>();
 
         int points = 0;
-        int y = 0; // единственная допустимая колонка — x = 0
+        int y = 0;
 
+        // сортировка по эффективности
         unitList.sort((a, b) ->
                 Double.compare(
                         (double) b.getBaseAttack() / b.getCost(),
@@ -34,8 +35,10 @@ public class GeneratePresetImpl implements GeneratePreset {
             if (count >= MAX_PER_TYPE) continue;
             if (points + template.getCost() > maxPoints) continue;
 
+            String name = type + " " + (count + 1);
+
             Unit unit = new Unit(
-                    type + "_" + (count + 1),
+                    name,
                     template.getUnitType(),
                     template.getHealth(),
                     template.getBaseAttack(),
@@ -43,8 +46,8 @@ public class GeneratePresetImpl implements GeneratePreset {
                     template.getAttackType(),
                     template.getAttackBonuses(),
                     template.getDefenceBonuses(),
-                    0,
-                    y++  // строки
+                    0,   // x — всегда 0
+                    y++  // y — уникальный
             );
 
             unit.setAlive(true);
